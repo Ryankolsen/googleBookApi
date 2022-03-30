@@ -9,6 +9,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Books } from "./features/books/Books";
 import { SandersonBooks } from "./features/books/SandersonBooks";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Book } from "./features/books/book";
+
+export const API_KEY = process.env.REACT_APP_GOOGLE_BOOK_API_KEY;
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +20,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<Books />} />
           <Route path="/Sanderson" element={<SandersonBooks />} />
+          <Route path="/Book" element={<Book />} />
         </Routes>
       </Provider>
     </BrowserRouter>

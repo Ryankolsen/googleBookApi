@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { buildQueries } from "@testing-library/react";
+import { API_KEY } from "../../index";
 
-const API_KEY = "";
+// "AIzaSyAO-fWSe17EWiEarLkE-RQv3DoNN9BXw_o";
 //key=API_KEY
 
 export interface bookSlice {
