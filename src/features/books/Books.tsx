@@ -1,52 +1,32 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  selectAllBooks,
-  useGetSandersonBooksQuery,
-  useGetBooksByAuthorQuery,
-} from "./booksSlice";
+import { useGetBooksByAuthorQuery } from "./booksSlice";
 import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
 import { SandersonBooks } from "./SandersonBooks";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { Link } from "react-router-dom";
 import { Spinner } from "../../components/Spinner";
+import "../../index.css";
 
 export const Books = () => {
-  const [authorName, setAuthorName] = useState("");
+  const [authorName, setAuthorName] = useState("Stephen King");
 
   const authorSearchName = useRef<any>(null);
 
   const { data, error, isLoading } = useGetBooksByAuthorQuery(authorName);
 
-  const dispatch = useAppDispatch();
-
-  function testButton(e: any | null) {
-    e.preventDefault();
-    console.log(authorName);
-  }
+  // const dispatch = useAppDispatch();
 
   const handleSubmit = (e: any | null) => {
     e.preventDefault();
     setAuthorName(authorSearchName?.current?.value);
   };
-  //   const useSetAuthName = (author: string) => {
-  //     const newAuthor = authorName;
-  //     setAuthorName(author);
-  //   };
-
-  console.log(data);
 
   return (
-    <div>
-      <Card>
-        <CardHeader>
-          <h2>Google API</h2>
-        </CardHeader>
-
-        <Link to={"/Sanderson"}>Bandon Sanderson </Link>
-
+    <div className="book__Card-container">
+      <Card className="">
         <Card.Header>
-          <h3> Search for your favorite Author!</h3>
+          <h3 className="book__Card-Header-h1">Search for Books by Author</h3>
         </Card.Header>
         <Card.Body>
           <Form>
@@ -67,22 +47,48 @@ export const Books = () => {
             >
               Submit
             </Button>
-
-            {/* <button onClick={(e) => testButton(e)}>Test Button</button> */}
           </Form>
 
           {error ? (
             <>An error Occurred!</>
           ) : isLoading ? (
-            <Spinner text="Loading..." />
+            <Spinner />
           ) : data ? (
             <>
               {data.items.map((bookData) => {
-                return <h3 key={bookData.id}>{bookData.volumeInfo.title}</h3>;
+                return (
+                  <>
+                    <div className="book__container" key={bookData.id}>
+                      <img
+                        src={bookData.volumeInfo.imageLinks?.smallThumbnail}
+                        alt={bookData.volumeInfo.title}
+                        width="150px"
+                      />
+                      <div className="book__container__Link_container">
+                        <Link
+                          className="book__container__Link"
+                          to={`/Book/${bookData.id}`}
+                          state={{ data: data }}
+                        >
+                          <h2 className="book__container__Link__h2">
+                            {bookData.volumeInfo.title}
+                          </h2>
+                        </Link>
+                        <div className="book__container-author">
+                          <p className="">
+                            Written By: <>{bookData.volumeInfo.authors}</>
+                          </p>
+                        </div>
+                        <p>{bookData.searchInfo.textSnippet}</p>
+                      </div>
+                    </div>
+                  </>
+                );
               })}
             </>
           ) : null}
         </Card.Body>
+        <Link to={"/Sanderson"}>Brandon Sanderson </Link>
       </Card>
     </div>
   );

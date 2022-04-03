@@ -3,7 +3,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { buildQueries } from "@testing-library/react";
 import { API_KEY } from "../../index";
 
-// "AIzaSyAO-fWSe17EWiEarLkE-RQv3DoNN9BXw_o";
 //key=API_KEY
 
 export interface bookSlice {
@@ -37,6 +36,14 @@ export interface bookApi {
         publisher: string;
         publishedDate: string;
         description: string;
+        imageLinks: {
+          smallThumbnail: string;
+          thumbnail: string;
+          language: string;
+          previewLing: string;
+          infoLink: string;
+          canonicalVolumeLink: string;
+        };
       };
       industryIdentifiers: [
         {
@@ -59,21 +66,64 @@ export interface bookApi {
         containsEpubBubbles: boolean;
         containsImageBubbles: boolean;
       };
-      imageLinks: {
-        smallThumbnail: string;
-        thumbnail: string;
-        language: string;
-        previewLing: string;
-        infoLink: string;
-        canonicalVolumeLink: string;
-        satesInfo: {};
-        assessInfo: {};
-        searchInfo: {};
+      sales: {};
+      assessInfo: {};
+      searchInfo: {
+        textSnippet: string;
       };
     }
   ];
 
   fulfilledTimeStamp: number;
+}
+
+export interface items {
+  kind: string;
+  id: string;
+  etag: string;
+  selfLink: string;
+  volumeInfo: {
+    title: string;
+    subtitle: string;
+    authors: string[];
+    publisher: string;
+    publishedDate: string;
+    description: string;
+    imageLinks: {
+      smallThumbnail: string;
+      thumbnail: string;
+      language: string;
+      previewLing: string;
+      infoLink: string;
+      canonicalVolumeLink: string;
+      sales: {};
+      assessInfo: {};
+      searchInfo: {
+        textSnippet: string;
+      };
+    };
+  };
+  industryIdentifiers: [
+    {
+      type: string;
+      identifier: string;
+    }
+  ];
+  readingModes: {
+    text: boolean;
+    image: boolean;
+  };
+  pageCount: number;
+  printType: string;
+  categories: string[];
+  averageRating: number;
+  maturityRating: string;
+  allowAnnonLogging: boolean;
+  contentVersion: string;
+  penalizationSummary: {
+    containsEpubBubbles: boolean;
+    containsImageBubbles: boolean;
+  };
 }
 
 //fetch using createAPI/RTK Query
@@ -95,4 +145,14 @@ export const bookApi = createApi({
 // export default bookSlice.reducer;
 export const { useGetSandersonBooksQuery, useGetBooksByAuthorQuery } = bookApi;
 
-export const selectAllBooks = (state: bookSlice) => state.books;
+export const selectAllBooks = (state: bookSlice) => console.log(state.books);
+
+// export const selectPostById = (
+//   state: bookSlice,
+//   bookId: string | undefined
+// ) => {
+//   console.log(state);
+//   console.log(bookId?.toString());
+//   state.books.map((book: any) => book.id === bookId);
+// };
+//   state.books.id.toString() === bookID;

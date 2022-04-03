@@ -42,5 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/babel-preset": "^6.2.0",
+    "@svgr/webpack": "^6.2.1",
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1"
   }
 }

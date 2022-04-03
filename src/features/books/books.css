@@ -1,0 +1,53 @@
+/* See src/index.css for spinner and background */
+@import "fonts.css";
+
+.book__Card-container {
+  width: 76%;
+  padding-left: 5;
+  background-color: rgba(0, 0, 0, 0.03);
+  margin-left: 12%;
+}
+.book__Card-Header-h1 {
+  text-align: center;
+  color: rgb(48, 41, 42);
+  font-size: 35px;
+  font-family: "Alfa Slab One", cursive;
+  font-family: "BioRhyme", serif;
+  font-family: "Domine", serif;
+  /* font-family: "Pacifico", cursive; */
+}
+
+.card-body {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.book__container {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  border-bottom: 1px solid black;
+  grid-template-columns: 200px 500px;
+}
+.book__container__Link_container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.book__container__Link {
+  text-decoration: none;
+}
+
+.book__container__Link__h2 {
+  color: black;
+  font-family: "Alfa Slab One", cursive;
+  font-family: "BioRhyme", serif;
+  font-family: "Pacifico", cursive;
+}
+.book__container__Link__h2:hover {
+  color: rgb(122, 121, 128);
+}
+.book__container-author {
+  display: inline-block;
+  vertical-align: top;
+}
