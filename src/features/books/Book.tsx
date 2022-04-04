@@ -35,11 +35,12 @@ export const Book = () => {
             )}
             {book.volumeInfo.publisher}
           </Card.Body>
+          <img
+            src={book.volumeInfo.imageLinks.thumbnail}
+            alt={book.volumeInfo.title}
+            width="350px"
+          ></img>
         </Card>
-        <img
-          src={book.volumeInfo.imageLinks.thumbnail}
-          alt={book.volumeInfo.title}
-        ></img>
       </div>
     </>
   );

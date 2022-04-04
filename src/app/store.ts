@@ -1,12 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { bookApi } from "../features/books/booksSlice";
+import bookSlice, { bookApi } from "../features/books/booksSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
   reducer: {
     [bookApi.reducerPath]: bookApi.reducer,
-
-    // books: bookReducer,
+    favoriteBooks: bookSlice,
   },
   middleware: (getDefauldmiddleware) =>
     getDefauldmiddleware().concat(bookApi.middleware),

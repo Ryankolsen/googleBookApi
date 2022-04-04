@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { useGetBooksByAuthorQuery } from "./booksSlice";
+import { useGetBooksByAuthorQuery, addFavBook } from "./booksSlice";
 import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
 import { SandersonBooks } from "./SandersonBooks";
 import CardHeader from "react-bootstrap/esm/CardHeader";
@@ -10,17 +10,35 @@ import "../../index.css";
 
 export const Books = () => {
   const [authorName, setAuthorName] = useState("Stephen King");
+  const [singleFavBook, setSingleFavBook] = useState({
+    favoriteBooks: "",
+    favoriteBookId: "",
+  });
 
   const authorSearchName = useRef<any>(null);
 
-  const { data, error, isLoading } = useGetBooksByAuthorQuery(authorName);
+  const { data, error, isLoading } = useGetBooksByAuthorQuery(authorName); //RTK Query
 
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: any | null) => {
     e.preventDefault();
     setAuthorName(authorSearchName?.current?.value);
   };
+
+  const handleSetSingleFavBook = (favBook: string, favBookId: string) => {
+    setSingleFavBook({
+      favoriteBooks: favBook,
+      favoriteBookId: favBookId,
+    });
+  };
+
+  useEffect(() => {
+    dispatch(addFavBook(singleFavBook));
+    console.log("dispatched!");
+  }, [singleFavBook]);
+
+  console.log(singleFavBook);
 
   return (
     <div className="book__Card-container">
@@ -57,32 +75,42 @@ export const Books = () => {
             <>
               {data.items.map((bookData) => {
                 return (
-                  <>
-                    <div className="book__container" key={bookData.id}>
-                      <img
-                        src={bookData.volumeInfo.imageLinks?.smallThumbnail}
-                        alt={bookData.volumeInfo.title}
-                        width="150px"
-                      />
-                      <div className="book__container__Link_container">
-                        <Link
-                          className="book__container__Link"
-                          to={`/Book/${bookData.id}`}
-                          state={{ data: data }}
-                        >
-                          <h2 className="book__container__Link__h2">
-                            {bookData.volumeInfo.title}
-                          </h2>
-                        </Link>
-                        <div className="book__container-author">
-                          <p className="">
-                            Written By: <>{bookData.volumeInfo.authors}</>
-                          </p>
-                        </div>
-                        <p>{bookData.searchInfo.textSnippet}</p>
+                  <div className="book__container" key={bookData.id}>
+                    <img
+                      src={bookData.volumeInfo.imageLinks?.smallThumbnail}
+                      alt={bookData.volumeInfo.title}
+                      width="150px"
+                    />
+                    <div className="book__container__Link_container">
+                      <Link
+                        className="book__container__Link"
+                        to={`/Book/${bookData.id}`}
+                        state={{ data: data }}
+                      >
+                        <h2 className="book__container__Link__h2">
+                          {bookData.volumeInfo.title}
+                        </h2>
+                      </Link>
+                      <div className="book__container-author">
+                        <p className="book__container-author">
+                          Written By: <>{bookData.volumeInfo.authors}</>
+                        </p>
                       </div>
+                      <p>{bookData.searchInfo.textSnippet}</p>
                     </div>
-                  </>
+                    <div>
+                      <Button
+                        onClick={(e) =>
+                          handleSetSingleFavBook(
+                            bookData.volumeInfo.title,
+                            bookData.id
+                          )
+                        }
+                      >
+                        Add to Favorites
+                      </Button>
+                    </div>
+                  </div>
                 );
               })}
             </>

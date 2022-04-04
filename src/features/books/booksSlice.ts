@@ -126,6 +126,14 @@ export interface items {
   };
 }
 
+// export interface favoriteBooksState [
+//   {
+//     favoriteBook: string,
+//     favoriteId: string
+//   }
+// ]
+
+const initialFavBookState: any = [{}];
 //fetch using createAPI/RTK Query
 export const bookApi = createApi({
   reducerPath: "googleAPI",
@@ -142,10 +150,37 @@ export const bookApi = createApi({
   }),
 });
 
+const bookSlice = createSlice({
+  name: "favoriteBooks",
+  initialState: initialFavBookState,
+  reducers: {
+    addFavBook(favoriteBooks, action) {
+      console.log(favoriteBooks);
+      console.log(action.payload);
+
+      if (action.payload.favoriteBook !== null) {
+        favoriteBooks.push(action.payload);
+      }
+
+      const clearedFavBooks = favoriteBooks.filter((book: any) => {
+        return book.favoriteBook !== null || book !== {};
+      });
+
+      favoriteBooks = clearedFavBooks;
+      // favoriteBooks === [{}, {}]
+      //   ? (favoriteBooks = [action.payload])
+      //   : favoriteBooks.push(action.payload);
+
+      // });
+    },
+  },
+});
+
 // export default bookSlice.reducer;
 export const { useGetSandersonBooksQuery, useGetBooksByAuthorQuery } = bookApi;
-
+export const { addFavBook } = bookSlice.actions;
 export const selectAllBooks = (state: bookSlice) => console.log(state.books);
+export default bookSlice.reducer;
 
 // export const selectPostById = (
 //   state: bookSlice,
