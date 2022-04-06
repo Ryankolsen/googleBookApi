@@ -10,10 +10,6 @@ import "../../index.css";
 
 export const Books = () => {
   const [authorName, setAuthorName] = useState("Stephen King");
-  const [singleFavBook, setSingleFavBook] = useState({
-    favoriteBooks: "",
-    favoriteBookId: "",
-  });
 
   const authorSearchName = useRef<any>(null);
 
@@ -21,24 +17,18 @@ export const Books = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (e: any | null) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    setAuthorName(authorSearchName?.current?.value);
+    setAuthorName(authorSearchName?.current?.value.toString());
   };
 
   const handleSetSingleFavBook = (favBook: string, favBookId: string) => {
-    setSingleFavBook({
+    const singleFavoriteBook = {
       favoriteBooks: favBook,
       favoriteBookId: favBookId,
-    });
+    };
+    dispatch(addFavBook(singleFavoriteBook));
   };
-
-  useEffect(() => {
-    dispatch(addFavBook(singleFavBook));
-    console.log("dispatched!");
-  }, [singleFavBook]);
-
-  console.log(singleFavBook);
 
   return (
     <div className="book__Card-container">
