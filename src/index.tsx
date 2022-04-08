@@ -11,6 +11,7 @@ import { SandersonBooks } from "./features/books/SandersonBooks";
 import { Book } from "./features/books/Book";
 import { NavBar } from "./app/NavBar";
 import { Layout } from "./app/Layout";
+import { FavoriteBooks } from "./features/favoriteBooks/FavoriteBooks";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const API_KEY = process.env.REACT_APP_GOOGLE_BOOK_API_KEY;
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route path="/" element={<Books />} />
             <Route path="/Sanderson" element={<SandersonBooks />} />
             <Route path="/book/:bookId" element={<Book />} />
+            <Route path="/favoriteBooks" element={<FavoriteBooks />} />
           </Routes>
         </Layout>
       </Provider>

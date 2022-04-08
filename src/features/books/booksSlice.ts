@@ -159,40 +159,20 @@ export const bookApi = createApi({
   }),
 });
 
-const bookSlice = createSlice({
-  name: "favoriteBooks",
-  initialState: initialFavBookState,
-  reducers: {
-    addFavBook(favoriteBooks, action) {
-      favoriteBooks.favoriteBooks.push(action.payload);
-
-      const filteredFavBooks = favoriteBooks.favoriteBooks.filter(
-        (book: any) => {
-          return book.favoriteBooks !== "";
-        }
-      );
-      console.log(filteredFavBooks);
-      // favoriteBooks = filteredFavBooks;
-      // console.log(filteredFavBooks);
-
-      // const clearedFavBooks = favoriteBooks.filter((book: any) => {
-      //   return book.favoriteBooks !== "";
-      // });
-      // console.log(clearedFavBooks);
-
-      // favoriteBooks = clearedFavBooks;
-
-      // favoriteBooks === [{}, {}]
-      //   ? (favoriteBooks = [action.payload])
-      //   : favoriteBooks.push(action.payload);
-
-      // });
-    },
-  },
-});
+// const bookSlice = createSlice({
+//   name: "favoriteBooks",
+//   initialState: initialFavBookState,
+//   reducers: {
+//     addFavBook(favoriteBooks, action) {
+//       if (action.payload.favoriteBooks !== null || "") {
+//         favoriteBooks.favoriteBooks.push(action.payload);
+//       }
+//     },
+//   },
+// });
 
 // export default bookSlice.reducer;
 export const { useGetSandersonBooksQuery, useGetBooksByAuthorQuery } = bookApi;
-export const { addFavBook } = bookSlice.actions;
+// export const { addFavBook } = bookSlice.actions;
 export const selectAllBooks = (state: bookSlice) => console.log(state.books);
-export default bookSlice.reducer;
+// export default bookSlice.reducer;

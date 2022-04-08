@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { useGetBooksByAuthorQuery, addFavBook } from "./booksSlice";
+import { useGetBooksByAuthorQuery } from "./booksSlice";
+import { addFavBook } from "../favoriteBooks/favoriteBookSlice";
 import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
 import { SandersonBooks } from "./SandersonBooks";
 import CardHeader from "react-bootstrap/esm/CardHeader";

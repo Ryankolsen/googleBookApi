@@ -1,7 +1,10 @@
 import React from "react";
 import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { allFavoriteBooks } from "../features/favoriteBooks/favoriteBookSlice";
 
 export const NavBar = () => {
+  console.log(allFavoriteBooks);
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -13,7 +16,13 @@ export const NavBar = () => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/Sanderson">Brandon Sanderson</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    to={"/favoriteBooks"}
+                    state={{ allFavoriteBooks }}
+                  ></Link>
+                  Favorite List
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
