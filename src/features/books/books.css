@@ -20,15 +20,25 @@
 .card-body {
   background-color: rgba(0, 0, 0, 0.03);
 }
-
-.book__container {
-  padding-left: 10px;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  border-bottom: 1px solid black;
-  grid-template-columns: 200px 400px, 200px;
+@media only screen and (max-width: 700px) {
+  .book__container {
+    display: inline-flexbox;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid black;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .book__container {
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    border-bottom: 1px solid black;
+    grid-template-columns: 200px 400px, 200px;
+  }
 }
 .book__container__Link_container {
   margin-left: 20px;

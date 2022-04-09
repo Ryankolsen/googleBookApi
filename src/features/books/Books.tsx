@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import React, { useRef, useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
 import { useGetBooksByAuthorQuery } from "./booksSlice";
 import { addFavBook } from "../favoriteBooks/favoriteBookSlice";
 import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
@@ -63,7 +63,9 @@ export const Books = () => {
           ) : isLoading ? (
             <Spinner />
           ) : !data?.items ? (
-            <div>Error! Please enter a valid author</div>
+            <div>
+              <h2>Error! Please enter a valid author</h2>
+            </div>
           ) : data ? (
             <>
               {console.log(data)}
