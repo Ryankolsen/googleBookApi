@@ -29,7 +29,7 @@
     border-bottom: 1px solid black;
   }
 }
-@media only screen and (min-width: 700px) {
+@media (min-width: 700px) {
   .book__container {
     padding-left: 10px;
     padding-bottom: 20px;
