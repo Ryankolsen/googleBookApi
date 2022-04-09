@@ -64,7 +64,7 @@ export const Books = () => {
             <Spinner />
           ) : !data?.items ? (
             <div>
-              <h2>Error! Please enter a valid author</h2>
+              <h2>Error! Please try again with a valid author</h2>
             </div>
           ) : data ? (
             <>
