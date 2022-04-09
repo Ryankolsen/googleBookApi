@@ -20,7 +20,7 @@
 .card-body {
   background-color: rgba(0, 0, 0, 0.03);
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-device-width: 700px) and (max-width: 700px) {
   .book__container {
     display: inline-flexbox;
     padding-left: 10px;
@@ -29,7 +29,7 @@
     border-bottom: 1px solid black;
   }
 }
-@media (min-width: 700px) {
+@media screen and (min-device-width: 700px) and (min-width: 700px) {
   .book__container {
     padding-left: 10px;
     padding-bottom: 20px;
