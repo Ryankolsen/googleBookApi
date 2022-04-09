@@ -40,7 +40,7 @@
   color: rgb(122, 121, 128);
 }
 .book__container-author {
-  display: inline-block;
+  /* display: inline-block; */
   vertical-align: top;
 }
 
