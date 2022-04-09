@@ -62,9 +62,12 @@ export const Books = () => {
             <>An error Occurred!</>
           ) : isLoading ? (
             <Spinner />
+          ) : !data?.items ? (
+            <div>Error! Please enter a valid author</div>
           ) : data ? (
             <>
-              {data.items.map((bookData) => {
+              {console.log(data)}
+              {data?.items.map((bookData) => {
                 return (
                   <div className="book__container" key={bookData.id}>
                     <img
