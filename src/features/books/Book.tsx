@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectAllBooks } from "./booksSlice";
-import { Routes, Route, useParams, useLocation } from "react-router-dom";
-import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
+import { useParams, useLocation } from "react-router-dom";
+import { Card, Alert, Dropdown, Form } from "react-bootstrap";
 import { items } from "./booksSlice";
 
 export const Book = () => {
