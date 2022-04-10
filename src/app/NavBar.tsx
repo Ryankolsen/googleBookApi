@@ -18,7 +18,11 @@ export const NavBar = () => {
               <Nav.Link href={"/"}>Home</Nav.Link>
               <Nav.Link href="/Sanderson">Brandon Sanderson</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <Link id="NavDropdown" to={"/favoriteBooks"}>
+                <Link
+                  className="nav-bar__Link"
+                  id="NavDropdown"
+                  to={"/favoriteBooks"}
+                >
                   Favorites
                 </Link>
                 <NavDropdown.Item href="#action/3.3">

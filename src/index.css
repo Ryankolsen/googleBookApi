@@ -1,7 +1,32 @@
+/* Contains Generic styling for app folder */
+
 .background {
   background-image: url("./app/media/bookshelf.jpg");
   /* background-color: #041e55; */
 }
+
+.nav-bar__Link {
+  text-decoration: none;
+  font-size: 17px;
+  color: rgb(27, 27, 27);
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.nav-bar__Link:hover {
+  background-color: rgb(223, 223, 223);
+}
+
+/* *************Spinner********** */
 
 .spinner {
   display: flex;

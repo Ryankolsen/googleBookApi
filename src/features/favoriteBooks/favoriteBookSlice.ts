@@ -24,7 +24,6 @@ const favoriteBookSlice = createSlice({
   reducers: {
     addFavBook(state, action) {
       // const currState = current(state.favoriteBooks); access current state if needed
-
       state.favoriteBooks.push(action.payload);
     },
   },
