@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { API_KEY } from "../../index";
 
 export interface favoriteBooksState {
@@ -22,10 +22,10 @@ const favoriteBookSlice = createSlice({
   name: "favoriteBooks",
   initialState: initialFavBookState,
   reducers: {
-    addFavBook(favoriteBooks, action) {
-      if (action.payload.favoriteBooks !== null || "") {
-        favoriteBooks.favoriteBooks.push(action.payload);
-      }
+    addFavBook(state, action) {
+      // const currState = current(state.favoriteBooks); access current state if needed
+
+      state.favoriteBooks.push(action.payload);
     },
   },
 });

@@ -1,34 +1,43 @@
 import React, { useRef, useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useGetBooksByAuthorQuery } from "./booksSlice";
-import { addFavBook } from "../favoriteBooks/favoriteBookSlice";
-import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
-import { SandersonBooks } from "./SandersonBooks";
-import CardHeader from "react-bootstrap/esm/CardHeader";
+import allFavoriteBooks, {
+  addFavBook,
+} from "../favoriteBooks/favoriteBookSlice";
+import { Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Spinner } from "../../components/Spinner";
 import "../../index.css";
 
 export const Books = () => {
   const [authorName, setAuthorName] = useState("Stephen King");
-
   const authorSearchName = useRef<any>(null);
-
   const { data, error, isLoading } = useGetBooksByAuthorQuery(authorName); //RTK Query
-
   const dispatch = useAppDispatch();
 
+  const favoriteBooks = useAppSelector(
+    (state) => state.favoriteBooks.favoriteBooks
+  );
+
+  //Handle when author name is submitted
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setAuthorName(authorSearchName?.current?.value.toString());
   };
 
+  //Handle adding a book to Favorite list
   const handleSetSingleFavBook = (favBook: string, favBookId: string) => {
     const singleFavoriteBook = {
       favoriteBooks: favBook,
       favoriteBookId: favBookId,
     };
-    dispatch(addFavBook(singleFavoriteBook));
+
+    //Check for duplicates before dispatch
+    favoriteBooks.some(
+      (favoriteBooks) => favoriteBooks.favoriteBookId === favBookId
+    )
+      ? console.log("duplicate Item")
+      : dispatch(addFavBook(singleFavoriteBook));
   };
 
   return (
@@ -68,7 +77,6 @@ export const Books = () => {
             </div>
           ) : data ? (
             <>
-              {console.log(data)}
               {data?.items.map((bookData) => {
                 return (
                   <div className="book__container" key={bookData.id}>
