@@ -22,7 +22,10 @@ export const Books = () => {
   //Handle when author name is submitted
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    setAuthorName(authorSearchName?.current?.value.toString());
+    const authSearchName = authorSearchName?.current?.value.toString();
+    authSearchName
+      ? setAuthorName(authorSearchName?.current?.value.toString())
+      : console.log();
   };
 
   //Handle adding a book to Favorite list
