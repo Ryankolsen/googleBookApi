@@ -1,8 +1,11 @@
-This App connects to the Google Books API and allows a user to search for books my any author. Future updates to make use of the "Favorite" button.
+This App uses React Redux Toolkit, Typescript, and RTK Query to access the Google Books API, allows a user to search for books by any author, and has the option to add books to a favorite list that can be viewed. Please note this is a work in progress. 
 
 Click below to see the app:
 https://main--astonishing-rolypoly-ad8c2b.netlify.app/
 
+
+
+This app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
