@@ -15,7 +15,18 @@
   font-family: "BioRhyme", serif;
   font-family: "Domine", serif;
 }
+.book__Card-Body__Button {
+  display: flex;
+  justify-content: end;
+  background-color: rgba(0, 0, 0, 0.03);
+  margin-bottom: -20px;
+}
 
+.book__Card__Button-Favorite {
+  align-self: flex-end;
+  width: 150px;
+  background-color: rgb(87, 83, 63);
+}
 .card-body {
   background-color: rgba(0, 0, 0, 0.03);
 }

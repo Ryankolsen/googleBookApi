@@ -50,6 +50,16 @@ export const Books = () => {
         <Card.Header>
           <h3 className="book__Card-Header-h1">Search for Books by Author</h3>
         </Card.Header>
+        <Card.Body className="book__Card-Body__Button ">
+          <Link to={"/favoriteBooks"}>
+            <Button
+              variant="outline-success"
+              className="book__Card__Button-Favorite "
+            >
+              View Favorites
+            </Button>
+          </Link>
+        </Card.Body>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">

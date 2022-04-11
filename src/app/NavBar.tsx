@@ -20,13 +20,13 @@ export const NavBar = () => {
               </Link>
 
               <Nav.Link href="/Sanderson">Brandon Sanderson</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown title="Favorites" id="basic-nav-dropdown">
                 <Link
                   className="nav-bar__Link"
                   id="NavDropdown"
                   to={"/favoriteBooks"}
                 >
-                  Favorites
+                  Favorite Books
                 </Link>
                 <NavDropdown.Item href="#action/3.3">
                   Something
