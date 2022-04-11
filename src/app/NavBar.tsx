@@ -15,7 +15,10 @@ export const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href={"/"}>Home</Nav.Link>
+              <Link className="nav-bar__Link-home" id="NavDropdown" to={"/"}>
+                Home
+              </Link>
+
               <Nav.Link href="/Sanderson">Brandon Sanderson</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <Link

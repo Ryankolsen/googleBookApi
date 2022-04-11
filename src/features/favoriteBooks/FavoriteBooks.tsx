@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const FavoriteBooks = () => {
   const favoriteBooks = useAppSelector(
@@ -20,6 +21,9 @@ export const FavoriteBooks = () => {
           })}
         </ul>
       </Card>
+      <Link id="NavDropdown" to={"/"}>
+        Home
+      </Link>
     </div>
   );
 };
