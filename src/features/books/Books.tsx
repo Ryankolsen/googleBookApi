@@ -94,11 +94,14 @@ export const Books = () => {
               {data?.items.map((bookData) => {
                 return (
                   <div className="book__container" key={bookData.id}>
-                    <img
-                      src={bookData.volumeInfo.imageLinks?.smallThumbnail}
-                      alt={bookData.volumeInfo.title}
-                      width="150px"
-                    />
+                    <Link to={`/Book/${bookData.id}`} state={{ data: data }}>
+                      <img
+                        className="book__img"
+                        src={bookData.volumeInfo.imageLinks?.smallThumbnail}
+                        alt={bookData.volumeInfo.title}
+                        width="150px"
+                      />
+                    </Link>
                     <div className="book__container__Link_container">
                       <Link
                         className="book__container__Link"

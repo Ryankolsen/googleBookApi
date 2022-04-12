@@ -54,6 +54,10 @@
   vertical-align: top;
 }
 
+.book__img:hover {
+  opacity: 0.7;
+}
+
 @media screen and (max-width: 650px) {
   .book__container {
     display: inline-flexbox;
