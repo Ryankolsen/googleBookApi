@@ -15,7 +15,7 @@ export const FavoriteBook = () => {
       ) : isLoading ? (
         <Spinner />
       ) : data ? (
-        <Card>
+        <Card className="book__Card-container">
           <Card.Header className="book__Card-Header">
             <h1>{data?.volumeInfo.title}</h1>
           </Card.Header>

@@ -10,8 +10,10 @@ export const FavoriteBooks = () => {
 
   return (
     <div>
-      <Card>
-        <div>FavoriteBooks</div>
+      <Card className="book__Card-container">
+        <Card.Header>
+          <h2>FavoriteBooks</h2>
+        </Card.Header>
         <Card.Body>
           {favoriteBooks.map((book) => {
             return book.favoriteBookId !== "" ? (
@@ -20,7 +22,7 @@ export const FavoriteBooks = () => {
                 to={`/favoriteBook/${book.favoriteBookId}`}
                 state={{ data: book }}
               >
-                <div>{book.favoriteBooks}</div>
+                <h4>{book.favoriteBooks}</h4>
               </Link>
             ) : null;
           })}
