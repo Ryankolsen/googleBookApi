@@ -1,25 +1,30 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { Button, Card, Alert, Dropdown, Form } from "react-bootstrap";
+import { useAppSelector } from "../../app/hooks";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const FavoriteBooks = () => {
   const favoriteBooks = useAppSelector(
     (state) => state.favoriteBooks.favoriteBooks
   );
-  console.log(favoriteBooks);
 
   return (
     <div>
       <Card>
         <div>FavoriteBooks</div>
-        <ul>
+        <Card.Body>
           {favoriteBooks.map((book) => {
             return book.favoriteBookId !== "" ? (
-              <li key={book.favoriteBookId}>{book.favoriteBooks}</li>
+              <Link
+                key={book.favoriteBookId}
+                to={`/favoriteBook/${book.favoriteBookId}`}
+                state={{ data: book }}
+              >
+                <div>{book.favoriteBooks}</div>
+              </Link>
             ) : null;
           })}
-        </ul>
+        </Card.Body>
       </Card>
       <Link id="NavDropdown" to={"/"}>
         Home

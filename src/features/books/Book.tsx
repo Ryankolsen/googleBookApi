@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectAllBooks } from "./booksSlice";
 import { useParams, useLocation } from "react-router-dom";
-import { Card, Alert, Dropdown, Form } from "react-bootstrap";
-import { items } from "./booksSlice";
+import { Card } from "react-bootstrap";
+import { items } from "./interfaces";
 
 export const Book = () => {
   const location: any = useLocation();
@@ -26,7 +24,9 @@ export const Book = () => {
             <h1>{book.volumeInfo.title} </h1>
           </Card.Header>
           <Card.Body>
-            <h4>Author: {book.volumeInfo.authors.map((author) => author)}</h4>
+            <h4>
+              Author: {book.volumeInfo.authors.map((author: any) => author)}
+            </h4>
             <p>{book.volumeInfo.description}</p>
             {book.pageCount ? (
               <p>Page Count: {book.pageCount}</p>
